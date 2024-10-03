@@ -205,6 +205,7 @@ parts:
       - --prefix=/
     source: git://anongit.freedesktop.org/xdg/default-icon-theme
     source-type: git
+    source-depth: 1
     override-build: |
       snapcraftctl build
       $SNAPCRAFT_STAGE/update-icon-cache.sh $SNAPCRAFT_PART_INSTALL/share/icons
@@ -218,6 +219,7 @@ parts:
     meson-parameters: [--prefix=/]
     source: https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git
     source-type: git
+    source-depth: 1
     override-build: |
       meson setup --prefix=/ $SNAPCRAFT_PART_SRC $SNAPCRAFT_PART_BUILD
       DESTDIR=$SNAPCRAFT_PART_INSTALL ninja -C $SNAPCRAFT_PART_BUILD install
@@ -233,6 +235,7 @@ parts:
       - --prefix=/
     source: https://gitlab.gnome.org/GNOME/gnome-themes-extra.git
     source-type: git
+    source-depth: 1
     override-build: |
       snapcraftctl build
       $SNAPCRAFT_STAGE/update-icon-cache.sh $SNAPCRAFT_PART_INSTALL/share/icons
@@ -283,6 +286,7 @@ parts:
     source: https://github.com/elementary/stylesheet.git
     source-type: git
     source-tag: 5.4.2
+    source-depth: 1
     meson-parameters: [--prefix=/]
     override-build: |
       snapcraftctl build
@@ -301,6 +305,7 @@ parts:
     plugin: meson
     source: https://github.com/elementary/icons.git
     source-type: git
+    source-depth: 1
     # Set scale_factors to 1, it does some funky linking
     meson-parameters: [--prefix=/, -Dscale_factors=1, -Dvolume_icons=false]
     override-build: |
@@ -317,6 +322,7 @@ parts:
     plugin: meson
     source: https://github.com/jnsh/arc-theme.git
     source-type: git
+    source-depth: 1
     meson-parameters:
       - --prefix=/
       - -Dthemes=gtk2,gtk3
@@ -339,6 +345,7 @@ parts:
     source: https://anongit.kde.org/breeze-gtk.git
     source-type: git
     source-tag: v5.92.0
+    source-depth: 1
     plugin: cmake
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=
@@ -370,6 +377,7 @@ parts:
     after: [utils]
     source: https://github.com/KDE/breeze.git
     source-type: git
+    source-depth: 1
     plugin: dump
     organize:
       'cursors/Breeze/Breeze/cursors' : 'share/icons/breeze_cursors/cursors'
@@ -550,6 +558,7 @@ parts:
     plugin: meson
     source: https://github.com/shimmerproject/Greybird.git
     source-type: git
+    source-depth: 1
     meson-parameters: [--prefix=/]
     override-build: |
       snapcraftctl build
@@ -571,6 +580,7 @@ parts:
     source: https://github.com/shimmerproject/elementary-xfce.git
     source-type: git
     source-tag: v0.15.2
+    source-depth: 1
     override-build: |
       snapcraftctl build
       $SNAPCRAFT_STAGE/update-icon-cache.sh $SNAPCRAFT_PART_INSTALL/share/icons
@@ -589,6 +599,7 @@ parts:
     plugin: nil
     source: https://github.com/nana-4/materia-theme.git
     source-tag: v20200320 # Latest master fails to build
+    source-depth: 1
     override-build: |
         mkdir -p $SNAPCRAFT_PART_INSTALL/share/themes
         ./install.sh --dest $SNAPCRAFT_PART_INSTALL/share/themes
