@@ -343,6 +343,7 @@ parts:
       - -DCMAKE_INSTALL_PREFIX=
       - -DCMAKE_CXX_STANDARD=11
     build-packages:
+      - build-essential
       - extra-cmake-modules
       - gtk2-engines-pixbuf
       - kde-style-breeze
