@@ -214,13 +214,13 @@ parts:
   # GNOME's default icon theme, also used by Fedora
   adwaita-icon-theme:
     after: [utils]
-    plugin: autotools
-    autotools-configure-parameters:
-      - --prefix=/
+    plugin: meson
+    meson-parameters: [--prefix=/]
     source: https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git
     source-type: git
     override-build: |
-      snapcraftctl build
+      meson setup --prefix=/ $SNAPCRAFT_PART_SRC $SNAPCRAFT_PART_BUILD
+      DESTDIR=$SNAPCRAFT_PART_INSTALL ninja -C $SNAPCRAFT_PART_BUILD install
       $SNAPCRAFT_STAGE/update-icon-cache.sh $SNAPCRAFT_PART_INSTALL/share/icons
     stage:
       - -share/pkgconfig
